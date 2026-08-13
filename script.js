@@ -43,20 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Floating WhatsApp visibility
     const floatingWhatsApp = document.querySelector('.floating-whatsapp');
-    const ctaSection = document.querySelector('.cta-section');
+    const ctaButtons = document.querySelectorAll('.btn-large');
     
     if (floatingWhatsApp) {
         window.addEventListener('scroll', () => {
             let hideForCta = false;
             
-            // Hide when near the CTA section at the bottom
-            if (ctaSection) {
-                const rect = ctaSection.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
+            // Check if any major CTA button is currently visible in the viewport
+            ctaButtons.forEach(btn => {
+                const rect = btn.getBoundingClientRect();
+                // If the CTA button is visible on the screen
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
                     hideForCta = true;
                 }
-            }
+            });
             
+            // Show after scrolling 300px, but hide if a CTA is on screen
             if (window.scrollY > 300 && !hideForCta) {
                 floatingWhatsApp.classList.add('visible');
             } else {

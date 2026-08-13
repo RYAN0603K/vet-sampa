@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileBtn && navLinks) {
         mobileBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            
-            // Transform hamburger to X
             const spans = mobileBtn.querySelectorAll('span');
             if (navLinks.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -20,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when clicking a link
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -48,88 +45,102 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const headerHeight = header.offsetHeight;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         });
     });
 
-    // Simple scroll animation for elements
+    // Scroll animation for elements
     const animateElements = () => {
-        const elements = document.querySelectorAll('.step-card, .service-card, .testimonial-card, .features-text');
-        
+        const elements = document.querySelectorAll('.service-card, .testimonial-card, .feature-card, .funnel-step-content');
         elements.forEach(el => {
             const elementTop = el.getBoundingClientRect().top;
-            const elementBottom = el.getBoundingClientRect().bottom;
-            
-            // Check if element is in viewport
-            if (elementTop < window.innerHeight - 50 && elementBottom > 0) {
-                // We add style inline for simplicity, but could use classes
+            if (elementTop < window.innerHeight - 60) {
                 el.style.opacity = '1';
                 el.style.transform = 'translateY(0)';
             }
         });
     };
-    
-    // Set initial state for animated elements
-    document.querySelectorAll('.step-card, .service-card, .testimonial-card').forEach(el => {
+
+    document.querySelectorAll('.service-card, .testimonial-card, .feature-card, .funnel-step-content').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
     });
 
     window.addEventListener('scroll', animateElements);
-    // Trigger once on load
     setTimeout(animateElements, 100);
 
-    // Video Scroll Effect
+    // Video Scroll Effect — with mobile fallback
     const video = document.getElementById('scroll-video');
+    const videoSection = document.querySelector('.video-scroll-section');
     const videoContainer = document.querySelector('.video-container');
 
     if (video && videoContainer) {
-        let scrollProgress = 0;
-        
-        // Mute and play temporarily to ensure it's loaded in some browsers
         video.muted = true;
-        
-        // Use requestAnimationFrame for smooth scrubbing
-        const scrubVideo = () => {
-            if (video.duration && !isNaN(video.duration)) {
-                const targetTime = scrollProgress * video.duration;
-                // Interpolation for buttery smoothness
-                video.currentTime += (targetTime - video.currentTime) * 0.1;
-            }
+        video.playsInline = true;
+
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (isMobile) {
+            // Mobile: disable scroll-scrub, just autoplay when visible
+            // Reduce container height so it doesn't take 400vh of scroll
+            videoContainer.style.height = '100vh';
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            observer.observe(videoSection);
+
+            // Also try to play on first touch anywhere
+            const playOnTouch = () => {
+                video.play().catch(() => {});
+                document.removeEventListener('touchstart', playOnTouch);
+            };
+            document.addEventListener('touchstart', playOnTouch, { passive: true });
+
+        } else {
+            // Desktop: scroll-scrub effect
+            let scrollProgress = 0;
+
+            const scrubVideo = () => {
+                if (video.duration && !isNaN(video.duration)) {
+                    const targetTime = scrollProgress * video.duration;
+                    video.currentTime += (targetTime - video.currentTime) * 0.1;
+                }
+                requestAnimationFrame(scrubVideo);
+            };
+
+            window.addEventListener('scroll', () => {
+                const rect = videoContainer.getBoundingClientRect();
+                const containerTop = rect.top;
+                const containerHeight = rect.height;
+                const windowHeight = window.innerHeight;
+
+                if (containerTop <= 0 && containerTop >= windowHeight - containerHeight) {
+                    const maxScroll = containerHeight - windowHeight;
+                    const scrolled = Math.abs(containerTop);
+                    scrollProgress = scrolled / maxScroll;
+                } else if (containerTop > 0) {
+                    scrollProgress = 0;
+                } else {
+                    scrollProgress = 1;
+                }
+            });
+
             requestAnimationFrame(scrubVideo);
-        };
-        
-        window.addEventListener('scroll', () => {
-            const rect = videoContainer.getBoundingClientRect();
-            const containerTop = rect.top;
-            const containerHeight = rect.height;
-            const windowHeight = window.innerHeight;
-            
-            // Calculate how far we've scrolled inside the container
-            if (containerTop <= 0 && containerTop >= windowHeight - containerHeight) {
-                const maxScroll = containerHeight - windowHeight;
-                const scrolled = Math.abs(containerTop);
-                scrollProgress = scrolled / maxScroll;
-            } else if (containerTop > 0) {
-                scrollProgress = 0;
-            } else {
-                scrollProgress = 1;
-            }
-        });
-        
-        // Start animation loop
-        requestAnimationFrame(scrubVideo);
+        }
     }
 });

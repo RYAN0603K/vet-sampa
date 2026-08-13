@@ -41,6 +41,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
+    // Floating WhatsApp visibility
+    const floatingWhatsApp = document.querySelector('.floating-whatsapp');
+    const ctaSection = document.querySelector('.cta-section');
+    
+    if (floatingWhatsApp) {
+        window.addEventListener('scroll', () => {
+            let hideForCta = false;
+            
+            // Hide when near the CTA section at the bottom
+            if (ctaSection) {
+                const rect = ctaSection.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    hideForCta = true;
+                }
+            }
+            
+            if (window.scrollY > 300 && !hideForCta) {
+                floatingWhatsApp.classList.add('visible');
+            } else {
+                floatingWhatsApp.classList.remove('visible');
+            }
+        }, { passive: true });
+    }
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -48,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
             const targetElement = document.querySelector(targetId);
+            const header = document.querySelector('.header');
             if (targetElement && header) {
                 const headerHeight = header.offsetHeight;
                 const elementPosition = targetElement.getBoundingClientRect().top;
@@ -57,114 +82,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll animation for elements (Safe fallback)
-    const elementsToAnimate = document.querySelectorAll('.section-header, .service-card, .testimonial-card, .funnel-step-content');
+    // === SCROLL ANIMATION OBSERVER ===
+    const scrollElements = document.querySelectorAll('.scroll-animate');
     
-    // Set initial state safely
-    elementsToAnimate.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    });
-
-    const animateElements = () => {
-        try {
-            elementsToAnimate.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                if (elementTop < window.innerHeight - 40) {
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
+    if (scrollElements.length > 0 && 'IntersectionObserver' in window) {
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); // Only animate once
                 }
             });
-        } catch(e) { console.error(e); }
-    };
-
-    window.addEventListener('scroll', animateElements, { passive: true });
-    setTimeout(animateElements, 100);
-    // Extra safety: force show all after 2 seconds in case scroll event fails
-    setTimeout(() => {
-        elementsToAnimate.forEach(el => {
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
+        }, {
+            root: null,
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: "0px 0px -50px 0px" // Slightly before the bottom of the screen
         });
-    }, 2000);
 
-    // Floating WhatsApp visibility
-    const floatingWhatsApp = document.querySelector('.floating-whatsapp');
-    const heroSection = document.querySelector('.hero');
-    if (floatingWhatsApp) {
-        window.addEventListener('scroll', () => {
-            const heroBottom = heroSection ? heroSection.getBoundingClientRect().bottom : 500;
-            if (window.scrollY > 400 || (heroBottom < 0)) {
-                floatingWhatsApp.classList.add('visible');
-            } else {
-                floatingWhatsApp.classList.remove('visible');
-            }
-        }, { passive: true });
-    }
-
-    // Video Scroll Effect — Safer Implementation
-    const video = document.getElementById('scroll-video');
-    const videoContainer = document.querySelector('.video-container');
-
-    if (video && videoContainer) {
-        try {
-            video.muted = true;
-            video.playsInline = true;
-            video.pause();
-
-            let scrollProgress = 0;
-            let loopRunning = false;
-
-            const scrubVideo = () => {
-                try {
-                    if (video.duration && isFinite(video.duration) && !isNaN(video.duration)) {
-                        const targetTime = scrollProgress * video.duration;
-                        if (isFinite(targetTime) && !isNaN(targetTime)) {
-                            // Only update if difference is noticeable to save CPU
-                            if (Math.abs(video.currentTime - targetTime) > 0.05) {
-                                video.currentTime = targetTime;
-                            }
-                        }
-                    }
-                } catch(e) {
-                    console.error("Video scrub error", e);
-                }
-                requestAnimationFrame(scrubVideo);
-            };
-
-            window.addEventListener('scroll', () => {
-                const rect = videoContainer.getBoundingClientRect();
-                const containerTop = rect.top;
-                const containerHeight = rect.height;
-                const windowHeight = window.innerHeight;
-
-                if (containerTop <= 0 && containerTop >= windowHeight - containerHeight) {
-                    const maxScroll = containerHeight - windowHeight;
-                    const scrolled = Math.abs(containerTop);
-                    scrollProgress = scrolled / maxScroll;
-                } else if (containerTop > 0) {
-                    scrollProgress = 0;
-                } else {
-                    scrollProgress = 1;
-                }
-            }, { passive: true });
-
-            video.addEventListener('loadedmetadata', () => {
-                if (!loopRunning) {
-                    loopRunning = true;
-                    requestAnimationFrame(scrubVideo);
-                }
-            });
-
-            // Fallback if loadedmetadata doesn't fire
-            setTimeout(() => {
-                if (!loopRunning) {
-                    loopRunning = true;
-                    requestAnimationFrame(scrubVideo);
-                }
-            }, 1000);
-            
-        } catch(e) { console.error(e); }
+        scrollElements.forEach(el => scrollObserver.observe(el));
+    } else {
+        // Fallback for older browsers
+        scrollElements.forEach(el => el.classList.add('show'));
     }
 });

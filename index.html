@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VetSampa - Atendimento veterinário no conforto da sua casa, em toda São Paulo.">
-    <title>VetSampa | Veterinário a Domicílio em São Paulo</title>
+    <title>VetSampa | Veterinário a Domicílio</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body>
     <!-- Navbar -->
     <header class="header">
         <div class="container navbar">
             <a href="#" class="logo">
-                <img src="logo.png" alt="VetSampa Logo">
-                <span>VetSampa</span>
+                <img src="logo-4k.png" alt="VetSampa Logo">
             </a>
             
             <button class="mobile-menu-btn" aria-label="Abrir menu">
@@ -31,10 +29,10 @@
             
             <nav class="nav-links">
                 <a href="#como-funciona">Como funciona</a>
+                <a href="#experiencia">Experiência</a>
                 <a href="#servicos">Serviços</a>
-                <a href="#diferenciais">Por que nós</a>
                 <a href="#depoimentos">Depoimentos</a>
-                <a href="https://wa.me/5511999999999" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Agende sua consulta</a>
+                <a href="https://wa.me/5511999999999" class="btn btn-primary" target="_blank">Agendar</a>
             </nav>
         </div>
     </header>
@@ -43,231 +41,129 @@
     <section class="hero" id="inicio">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1>Atendimento veterinário no <span class="highlight">conforto da sua casa</span>, em toda São Paulo</h1>
-                <p>Veterinários prontos para qualquer situação, sem que você ou seu pet precisem sair de casa.</p>
-                <div class="hero-buttons">
-                    <a href="https://wa.me/5511999999999" class="btn btn-primary btn-large" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        Agende sua Consulta
-                    </a>
-                </div>
+                <h1>O veterinário que vai até o seu sofá.</h1>
+                <p>Nós levamos o consultório até a sua casa. Menos estresse para o seu pet, mais comodidade para você em toda São Paulo.</p>
+                <a href="https://wa.me/5511999999999" class="btn btn-primary btn-large" target="_blank">
+                    Chamar o VetSampa
+                </a>
             </div>
             <div class="hero-image">
-                <img src="hero-man.png" alt="Veterinário VetSampa atendendo pet">
+                <img src="hero-man.png" alt="Banner Principal">
             </div>
         </div>
     </section>
 
-    <!-- Funil / Jornada do Cliente -->
-    <section class="funnel" id="como-funciona">
+    <!-- Funil -->
+    <section class="section-alt" id="como-funciona">
         <div class="container">
             <div class="section-header">
-                <img src="logo.png" alt="VetSampa" class="section-logo">
-                <h2>Como funciona o atendimento</h2>
-                <p>Do primeiro contato até a solução — simples, rápido e sem sair de casa.</p>
+                <h2>Como funciona?</h2>
+                <p>Quatro passos simples para resolver o problema do seu pet.</p>
             </div>
-
-            <div class="funnel-timeline">
-                <!-- Step 1 -->
-                <div class="funnel-step">
-                    <div class="funnel-step-number">1</div>
-                    <div class="funnel-step-line"></div>
-                    <div class="funnel-step-content">
-                        <div class="funnel-icon-wrap">
-                            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        </div>
-                        <h3>Envie uma mensagem</h3>
-                        <p>Mande um "oi" pelo WhatsApp. Conte o que está acontecendo com o seu pet — sem burocracia, sem formulário.</p>
-                    </div>
+            <div class="funnel-grid">
+                <div class="funnel-step-content">
+                    <div class="funnel-img-wrap"><img src="funnel-phone.png" alt="Passo 1"></div>
+                    <h3>1. Dê um Oi</h3>
+                    <p>Mande uma mensagem no WhatsApp.</p>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="funnel-step">
-                    <div class="funnel-step-number">2</div>
-                    <div class="funnel-step-line"></div>
-                    <div class="funnel-step-content">
-                        <div class="funnel-icon-wrap">
-                            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        </div>
-                        <h3>Marque a consulta</h3>
-                        <p>Escolha o melhor dia e horário. Nossa equipe agenda e confirma tudo rapidamente pelo próprio chat.</p>
-                    </div>
+                <div class="funnel-step-content">
+                    <div class="funnel-img-wrap"><img src="funnel-calendar.png" alt="Passo 2"></div>
+                    <h3>2. Agende</h3>
+                    <p>Escolha o melhor dia e horário.</p>
                 </div>
-
-                <!-- Step 3 -->
-                <div class="funnel-step">
-                    <div class="funnel-step-number">3</div>
-                    <div class="funnel-step-line"></div>
-                    <div class="funnel-step-content">
-                        <div class="funnel-icon-wrap">
-                            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                        </div>
-                        <h3>Atendimento na sua casa</h3>
-                        <p>O veterinário vai até você com todos os equipamentos. Consulta, vacina e exame clínico sem estresse para o pet.</p>
-                    </div>
+                <div class="funnel-step-content">
+                    <h3>3. Na sua casa</h3>
+                    <p>Chegamos com tudo pronto para atender.</p>
                 </div>
-
-                <!-- Step 4 -->
-                <div class="funnel-step">
-                    <div class="funnel-step-number">4</div>
-                    <div class="funnel-step-line last"></div>
-                    <div class="funnel-step-content">
-                        <div class="funnel-icon-wrap">
-                            <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
-                        <h3>Problema solucionado</h3>
-                        <p>Diagnóstico na hora. Se precisar de exame de sangue ou procedimento especial, encaminhamos para clínicas e laboratórios parceiros na sua região.</p>
-                        <div class="funnel-tags">
-                            <span>Exames laboratoriais</span>
-                            <span>Clínicas parceiras</span>
-                            <span>Acompanhamento</span>
-                        </div>
-                    </div>
+                <div class="funnel-step-content">
+                    <h3>4. Tá resolvido</h3>
+                    <p>Diagnóstico e cuidado completo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Video Scroll Section -->
+    <!-- Video Scroll -->
     <section class="video-scroll-section" id="experiencia">
         <div class="video-container">
             <div class="sticky-video-wrapper">
-                <video id="scroll-video" muted playsinline preload="auto">
-                    <source src="scroll-video.mp4" type="video/mp4">
-                </video>
+                <video id="scroll-video" src="scroll-video.mp4" muted playsinline preload="auto"></video>
                 <div class="video-overlay-text">
-                    <img src="logo.png" alt="VetSampa" class="video-logo">
-                    <h2>Uma experiência única para o seu pet</h2>
+                    <img src="logo-4k.png" class="video-logo" alt="VetSampa">
+                    <h2>Atendimento Premium</h2>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Serviços Section -->
-    <section class="services" id="servicos">
+    <section id="servicos">
         <div class="container">
             <div class="section-header">
-                <h2>Nossos Serviços</h2>
-                <p>O cuidado de uma clínica com o conforto do seu lar</p>
+                <h2>O que fazemos</h2>
+                <p>Tudo o que uma clínica faz, mas na sua sala de estar.</p>
             </div>
             
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
-                    </div>
+                    <div class="service-icon"><img src="icone-maleta.png" alt="Serviço"></div>
                     <h3>Clínico Geral</h3>
-                    <p>Avaliação completa da saúde do seu pet, check-ups e diagnósticos precisos em casa.</p>
+                    <p>Check-ups completos no ambiente seguro do pet.</p>
                 </div>
-                
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4"></path><path d="M12 18v4"></path><path d="M4.93 4.93l2.83 2.83"></path><path d="M16.24 16.24l2.83 2.83"></path><path d="M2 12h4"></path><path d="M18 12h4"></path><path d="M4.93 19.07l2.83-2.83"></path><path d="M16.24 7.76l2.83-2.83"></path></svg>
-                    </div>
-                    <h3>Exames de Sangue</h3>
-                    <p>Coleta rápida e menos estressante. Resultados via laboratórios parceiros de referência.</p>
+                    <div class="service-icon"><img src="icone-seringa.png" alt="Serviço"></div>
+                    <h3>Vacinas</h3>
+                    <p>Imunização rápida e tranquila no seu sofá.</p>
                 </div>
-                
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    </div>
-                    <h3>Vacinação</h3>
-                    <p>Vacinas importadas aplicadas no conforto do seu sofá. Carteirinha atualizada na hora.</p>
+                    <div class="service-icon"><img src="icone-tubo.png" alt="Serviço"></div>
+                    <h3>Exames</h3>
+                    <p>Sangue e exames coletados ali mesmo.</p>
                 </div>
-                
                 <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                    </div>
-                    <h3>Emergências</h3>
-                    <p>Pronto atendimento domiciliar para situações urgentes. Equipamentos modernos e agilidade.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Por que nós -->
-    <section class="features" id="diferenciais">
-        <div class="container">
-            <div class="section-header">
-                <h2>Por que escolher a <span class="highlight">VetSampa</span>?</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-emoji">🐾</div>
-                    <h3>Menos Estresse</h3>
-                    <p>Sem caixinha de transporte, sem carro, sem medo. Seu pet é atendido no ambiente que ele conhece.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-emoji">🛋️</div>
-                    <h3>Comodidade Total</h3>
-                    <p>Não perca tempo no trânsito. Nós vamos até você, em qualquer bairro de São Paulo.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-emoji">🎓</div>
-                    <h3>Veterinários Qualificados</h3>
-                    <p>Equipe formada nas melhores universidades de SP com vasta experiência clínica.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-emoji">⏱️</div>
-                    <h3>Sem Filas</h3>
-                    <p>Horário marcado, atendimento pontual. Nada de esperar em salas lotadas com outros animais.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Coverage -->
-    <section class="coverage" id="cobertura">
-        <div class="container coverage-content">
-            <div class="coverage-text">
-                <img src="logo.png" alt="VetSampa" class="section-logo">
-                <h2>Atendemos toda a cidade de São Paulo</h2>
-                <p>Unidades móveis espalhadas estrategicamente para chegar rápido a qualquer bairro da capital paulista.</p>
-                <div class="zones">
-                    <span class="zone-badge">Zona Sul</span>
-                    <span class="zone-badge">Zona Oeste</span>
-                    <span class="zone-badge">Centro</span>
-                    <span class="zone-badge">Zona Norte</span>
-                    <span class="zone-badge">Zona Leste</span>
+                    <div class="service-icon"><img src="icone-maleta.png" alt="Serviço"></div>
+                    <h3>Urgências</h3>
+                    <p>Chegamos rápido com a maleta pronta para agir.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="testimonials" id="depoimentos">
+    <section class="section-alt" id="depoimentos">
         <div class="container">
             <div class="section-header">
                 <h2>O que os tutores dizem</h2>
             </div>
-            
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p>"A Dra. Camila foi um anjo! Meu gato morria de medo de sair de casa. Foi a primeira vez que uma consulta foi tão tranquila. Super recomendo a VetSampa!"</p>
+                    <p>"A Dra. Camila foi um anjo! Meu gato morria de medo da caixinha."</p>
                     <div class="author">
-                        <strong>Mariana S.</strong>
-                        <span>Tutora do Simba (Gato)</span>
+                        <div class="author-info">
+                            <strong>Mariana S.</strong>
+                            <p style="font-size: 0.85rem; color: #888; margin: 0;">Tutora do Simba</p>
+                        </div>
                     </div>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p>"Excelente serviço! Estava chovendo muito e não queria sair com o Thor doente. O atendimento chegou rápido e o diagnóstico foi certeiro."</p>
+                    <p>"Excelente! Estava chovendo e o atendimento chegou rápido e certeiro."</p>
                     <div class="author">
-                        <strong>Carlos V.</strong>
-                        <span>Tutor do Thor (Golden)</span>
+                        <div class="author-info">
+                            <strong>Carlos V.</strong>
+                            <p style="font-size: 0.85rem; color: #888; margin: 0;">Tutor do Thor</p>
+                        </div>
                     </div>
                 </div>
-                
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p>"Fizeram coleta de sangue na minha sala e encaminharam pro laboratório parceiro. A agilidade e facilidade compensam muito. Ganharam uma cliente."</p>
+                    <p>"Fizeram coleta na minha sala! A facilidade compensa muito."</p>
                     <div class="author">
-                        <strong>Fernanda L.</strong>
-                        <span>Tutora da Mel (Poodle)</span>
+                        <div class="author-info">
+                            <strong>Fernanda L.</strong>
+                            <p style="font-size: 0.85rem; color: #888; margin: 0;">Tutora da Mel</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -276,11 +172,12 @@
 
     <!-- Final CTA -->
     <section class="cta-section">
-        <div class="container cta-content">
-            <img src="logo.png" alt="VetSampa" class="cta-logo">
-            <h2>Pronto para dar o melhor pro seu melhor amigo?</h2>
-            <p>Agende agora e surpreenda-se com a praticidade.</p>
-            <a href="https://wa.me/5511999999999" class="btn btn-primary btn-large cta-btn" target="_blank" rel="noopener noreferrer">Falar com Veterinário</a>
+        <div class="container">
+            <div class="cta-content">
+                <img src="logo-4k.png" class="cta-logo" alt="VetSampa">
+                <h2>Pronto para a consulta mais fácil da sua vida?</h2>
+                <a href="https://wa.me/5511999999999" class="btn btn-primary btn-large" target="_blank">Falar com o Vet</a>
+            </div>
         </div>
     </section>
 
@@ -289,39 +186,32 @@
         <div class="container footer-content">
             <div class="footer-brand">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="VetSampa Logo">
-                    <span>VetSampa</span>
+                    <img src="logo-4k.png" alt="VetSampa Logo">
                 </div>
-                <p>O melhor atendimento veterinário da capital, sem que você precise sair de casa.</p>
+                <p>Seu pet feliz, em casa.</p>
             </div>
             
             <div class="footer-links">
-                <h3>Links Úteis</h3>
                 <ul>
                     <li><a href="#como-funciona">Como funciona</a></li>
-                    <li><a href="#servicos">Nossos Serviços</a></li>
-                    <li><a href="#diferenciais">Diferenciais</a></li>
-                    <li><a href="#cobertura">Área de Atendimento</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
                 </ul>
             </div>
             
             <div class="footer-contact">
-                <h3>Contato</h3>
                 <p>WhatsApp: (11) 99999-9999</p>
-                <p>Email: contato@vetsampa.com.br</p>
-                <p>Horário: Seg a Dom, 8h às 22h</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 VetSampa. Todos os direitos reservados.</p>
+            <p>&copy; 2026 VetSampa.</p>
         </div>
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/5511999999999" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp">
-        <svg viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    <a href="https://wa.me/5511999999999" class="floating-whatsapp" target="_blank" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="30" height="30" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
     </a>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=6"></script>
 </body>
 </html>

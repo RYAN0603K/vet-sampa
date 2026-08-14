@@ -106,4 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fallback for older browsers
         scrollElements.forEach(el => el.classList.add('show'));
     }
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.closest('.faq-item');
+            item.classList.toggle('active');
+        });
+    });
 });
